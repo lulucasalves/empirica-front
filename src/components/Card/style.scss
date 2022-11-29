@@ -1,0 +1,97 @@
+.card {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  position: relative;
+
+  .rating {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+
+    p {
+      line-height: 0;
+      font-size: 0.9rem;
+      margin-right: 0.4rem;
+    }
+
+    svg {
+      fill: var(--primary);
+      font-size: 1rem;
+    }
+  }
+
+  .image {
+    height: 12rem;
+    width: 11rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+  }
+
+  .cardTitle {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .cardPrice {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  .cardOptions {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 1rem;
+
+    div {
+      padding: 0.2rem 0;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      p {
+        transition: 0.3s;
+      }
+
+      &:first-child {
+        border: 1px solid var(--text);
+
+        &:hover {
+          transition: 0.3s;
+          background: var(--text);
+          p {
+            transition: 0.3s;
+            color: var(--white);
+          }
+        }
+      }
+
+      &:last-child {
+        background: var(--primary);
+        p {
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
