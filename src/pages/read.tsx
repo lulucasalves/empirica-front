@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 
 import { IRootState } from 'store'
-import { getAllProducts } from 'services/get/allProducts'
+import { getAllProducts } from 'services'
 import { setAllProducts } from 'store/products'
 import { IProductData } from 'types'
 import { PageTemplate, Card, Cards } from 'components'

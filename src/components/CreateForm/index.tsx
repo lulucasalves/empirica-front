@@ -1,14 +1,12 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useMemo, useState } from 'react'
 
 import { createSchema } from 'schemas/createSchema'
-import { Input, DoubleInputs } from 'components'
-import { InputSelect } from 'components/Select'
-import { getCategories } from 'services/get/categories'
-import { postProduct } from 'services/post/postProduct'
-import { useDispatch } from 'react-redux'
+import { Input, DoubleInputs, InputSelect } from 'components'
+import { getCategories, postProduct } from 'services'
 import { createProduct } from 'store/products'
 import { IProductPost } from 'types'
 
@@ -31,7 +29,7 @@ export function CreateForm() {
   } = useForm<ICreateForm>({
     resolver: yupResolver(createSchema)
   })
-  
+
   const [categories, setCategories] = useState<string[]>([])
 
   useMemo(() => {

@@ -2,15 +2,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { createSchema } from 'schemas/createSchema'
-import { Input, DoubleInputs } from 'components'
-import { InputSelect } from 'components/Select'
-import { getCategories } from 'services/get/categories'
-import { postProduct } from 'services/post/postProduct'
-import { useDispatch } from 'react-redux'
-import { createProduct } from 'store/products'
-import { IProductData, IProductPost } from 'types'
+import { Input, DoubleInputs, InputSelect } from 'components'
+import { editProduct } from 'store/products'
+import { IProductData } from 'types'
+import { putProduct, getCategories } from 'services'
 
 interface IEditForm {
   title: string
@@ -64,12 +62,16 @@ export function EditForm({
     category,
     image
   }: IEditForm) {
-    await postProduct({ title, price, description, category, image })
-      .then((res: unknown) =>
+    await putProduct({ id, title, price, description, category, image })
+      .then(() =>
         dispatch(
-          createProduct({
-            ...(res as IProductPost),
-            rating: { rate: 0, count: 0 }
+          editProduct({
+            id,
+            title,
+            price,
+            description,
+            category,
+            image
           })
         )
       )
@@ -79,7 +81,7 @@ export function EditForm({
 
   return (
     <div className="sectionForm">
-      <p className="formTitle">Edit new product</p>
+      <p className="formTitle">Edit product</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <DoubleInputs>
           <>

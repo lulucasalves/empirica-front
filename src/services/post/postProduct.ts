@@ -1,4 +1,7 @@
+import { AxiosError, AxiosResponse } from 'axios'
+
 import { IProductCreate } from 'types'
+
 import { api } from '../api'
 
 export function postProduct({
@@ -13,7 +16,7 @@ export function postProduct({
     ;(async () => {
       await api
         .post(`products`, productObject)
-        .then((res: any) => {
+        .then((res: AxiosResponse) => {
           const data = res.data
           if (res.status === 200 || res.status === 201) {
             resolve(data)
@@ -21,7 +24,7 @@ export function postProduct({
             reject(data.message)
           }
         })
-        .catch((error: any) => reject(error))
+        .catch((error: AxiosError) => reject(error))
     })()
   })
 }

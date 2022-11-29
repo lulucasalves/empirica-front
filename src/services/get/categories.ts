@@ -1,3 +1,5 @@
+import { AxiosError, AxiosResponse } from 'axios'
+
 import { api } from '../api'
 
 export function getCategories() {
@@ -5,7 +7,7 @@ export function getCategories() {
     ;(async () => {
       await api
         .get(`products/categories`)
-        .then((res: any) => {
+        .then((res: AxiosResponse) => {
           const data = res.data
           if (res.status === 200 || res.status === 201) {
             resolve(data)
@@ -13,7 +15,7 @@ export function getCategories() {
             reject(data.message)
           }
         })
-        .catch((error: any) => reject(error))
+        .catch((error: AxiosError) => reject(error))
     })()
   })
 }

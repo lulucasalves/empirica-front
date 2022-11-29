@@ -1,7 +1,8 @@
-import { PageTemplate, EditForm } from 'components'
 import { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getProductById } from 'services/get/product'
+
+import { PageTemplate, EditForm } from 'components'
+import { getProductById } from 'services'
 import { IProductData } from 'types'
 
 export default function Create() {

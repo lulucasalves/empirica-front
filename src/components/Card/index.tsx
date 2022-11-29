@@ -1,13 +1,18 @@
 import { AiFillStar } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
+
 import { IProductData } from 'types'
 
 export function Card({
+  id,
   image,
   title,
   price,
   rating,
   description
 }: IProductData) {
+  const navigate = useNavigate()
+
   return (
     <div className="card">
       <div className="rating">
@@ -24,10 +29,10 @@ export function Card({
       </p>
       <p className="cardPrice">$ {price}</p>
       <div className="cardOptions">
-        <div>
+        <div onClick={() => navigate(`/update/${id}`)}>
           <p>Edit</p>
         </div>
-        <div>
+        <div onClick={() => navigate(`/delete/${id}`)}>
           <p>Delete</p>
         </div>
       </div>

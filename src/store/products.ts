@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+
 import { IOrderBy, IProductData, IProductStore } from 'types'
 
 const productSlice = createSlice({
@@ -34,7 +35,7 @@ const productSlice = createSlice({
 
       state.products.map((val: IProductData) => {
         if (val.id === payl.id) {
-          val = payl
+          val = { ...payl, rating: val.rating }
         }
         nullArray.push(val)
         return null
