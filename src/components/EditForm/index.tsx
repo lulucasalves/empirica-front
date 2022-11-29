@@ -87,14 +87,14 @@ export function EditForm({
           <>
             <Input
               defaultValue={title}
-              placeholder="Digite o título do produto"
+              placeholder="Enter the product title"
               type="text"
               label="Title"
               error={errors.title?.message}
               {...register('title')}
             />
             <Input
-              placeholder="Digite o preço do produto"
+              placeholder="Enter product price"
               type="number"
               label="Price"
               maxLength={17}
@@ -106,7 +106,7 @@ export function EditForm({
         <DoubleInputs>
           <>
             <Input
-              placeholder="Digite uma url de imagem"
+              placeholder="Enter an image url"
               type="text"
               label="Image"
               error={errors.image?.message}
@@ -121,7 +121,7 @@ export function EditForm({
           </>
         </DoubleInputs>
         <Input
-          placeholder="Digite a descrição"
+          placeholder="Enter the description"
           type="text"
           label="Description"
           error={errors.image?.message}
